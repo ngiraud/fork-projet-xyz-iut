@@ -181,25 +181,25 @@ return [
         ],
 
         'password' => [
-            'min' => 'Choisissez un mot de passe plus long.'
+            'min' => 'Choisissez un mot de passe plus long.',
         ],
 
         'code' => [
             'size' => 'Ce code est invalide ou a déjà été utilisé.',
-            'exists' => 'Ce code est invalide ou a déjà été utilisé.'
+            'exists' => 'Ce code est invalide ou a déjà été utilisé.',
         ],
 
         'terms' => [
-            'accepted' => 'Vous devez accepter les règles pour continuer.'
+            'accepted' => 'Vous devez accepter les règles pour continuer.',
         ],
 
         'email' => [
-            'unique' => 'Cette adresse est déjà utilisée par un autre utilisateur.'
+            'unique' => 'Cette adresse est déjà utilisée par un autre utilisateur.',
         ],
-        
+
         'avatar' => [
-            'uploaded' => 'L\'image ne doit pas dépasser 1 Mo.'
-        ]
+            'uploaded' => 'L\'image ne doit pas dépasser 1 Mo.',
+        ],
     ],
 
     /*
@@ -216,7 +216,7 @@ return [
     'attributes' => [
         'title' => 'titre',
         'artist' => 'artiste',
-        'password' => 'mot de passe'
+        'password' => 'mot de passe',
     ],
 
 ];

@@ -17,6 +17,6 @@ return [
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
-    'remaining_codes' => '[0,1] :count remaining token|[2,*] :count remaining tokens'
+    'remaining_codes' => '[0,1] :count remaining token|[2,*] :count remaining tokens',
 
 ];
