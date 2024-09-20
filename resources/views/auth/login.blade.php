@@ -9,7 +9,9 @@
             <form method="post" action="" class="block-content space-y-4">
                 <div class="title">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                              d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z"
+                              clip-rule="evenodd"/>
                     </svg>
 
                     <h1>Accès membres XYZ</h1>
@@ -17,7 +19,7 @@
 
                 <div>
                     <label for="email">Adresse email</label>
-                    <input id="email" name="email" type="text" placeholder="email" class="w-full" autocomplete="email" autofocus value="">
+                    <input id="email" name="email" type="text" placeholder="email" class="w-full" autocomplete="email" autofocus value="{{ old('email') }}">
                 </div>
 
                 <div>
@@ -25,7 +27,13 @@
                     <input id="password" name="password" type="password" placeholder="•••••••••••••••" class="w-full">
                 </div>
 
-                <p class="error-message">Exemple de message d'erreur</p>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <p class="error-message">{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
 
                 <div>
                     @csrf
