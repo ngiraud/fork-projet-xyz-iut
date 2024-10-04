@@ -15,7 +15,7 @@
 
     <ul class="nav-right">
         <li @class(['current' => false])>
-            <a href="">Profil</a>
+            <a href="{{ route('profile.show') }}">Profil</a>
         </li>
         <li>
             <form action="{{ route('logout') }}" method="post">

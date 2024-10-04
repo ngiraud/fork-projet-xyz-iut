@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,6 @@ Route::post('/register/{code:code}/verify-terms', [RegisterController::class, 'v
 
 Route::get('/register/{code:code}', [RegisterController::class, 'create'])->name('register');
 Route::post('/register/{code:code}', [RegisterController::class, 'store']);
+
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
