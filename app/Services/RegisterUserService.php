@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Models\Code;
 use App\Models\User;
+use App\Notifications\WelcomeUserNotification;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,6 +20,10 @@ class RegisterUserService
         ]);
 
         $code->markAsUsed($user);
+
+        $user->notify(new WelcomeUserNotification());
+
+        event(new Registered($user));
 
         return $user;
     }
