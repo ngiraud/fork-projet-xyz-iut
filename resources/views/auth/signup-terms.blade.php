@@ -5,11 +5,14 @@
         </a>
 
         <section class="block">
+            <form action="{{ route('register.verify-terms', $code) }}" method="post" class="block-content signup-form space-y-8">
+                @csrf
 
-            <form action="" method="get" class="block-content signup-form space-y-8">
                 <div class="title">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                              d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z"
+                              clip-rule="evenodd"/>
                     </svg>
 
                     <h1>Devenir membre XYZ</h1>
@@ -18,14 +21,14 @@
                 <div>
                     <label for="email">Invité par</label>
                     <div class="host">
-                        <x-avatar size="medium" :src="null" />
+                        <x-avatar size="medium" :src="$code->host->avatar" :alt="$code->host->name"/>
                         <div>
-                            <h1>user0001</h1>
-                            <h2>{{ trans_choice('tracks.posts', 13) }}</h2>
+                            <h1>{{ $code->host->name }}</h1>
+                            <h2>This is fake: {{ trans_choice('tracks.posts', 13) }}</h2>
                         </div>
                     </div>
                 </div>
-                
+
                 <div>
                     <p>
                         XYZ est une communauté musicale accessible sur invitation.
@@ -47,10 +50,13 @@
                     <label for="terms">J'ai compris et j'accepte les règles</label>
                 </div>
 
-                <p class="error-message">Exemple de message d'erreur</p>
+                @error('terms')
+                <div class="alert alert-danger">
+                    <p class="error-message">{{ $message }}</p>
+                </div>
+                @enderror
 
                 <div>
-                    <input type="hidden" name="code" value="ABCD-123-EFGH">
                     <button class="primary w-full">Continuer</button>
                 </div>
             </form>

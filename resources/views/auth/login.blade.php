@@ -5,8 +5,7 @@
         </a>
 
         <section class="block">
-
-            <form method="post" action="" class="block-content space-y-4">
+            <form method="post" action="{{ route('login') }}" class="block-content space-y-4">
                 <div class="title">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
@@ -19,7 +18,7 @@
 
                 <div>
                     <label for="email">Adresse email</label>
-                    <input id="email" name="email" type="text" placeholder="email" class="w-full" autocomplete="email" autofocus value="{{ old('email') }}">
+                    <input id="email" name="email" type="email" placeholder="email" class="w-full" autocomplete="email" autofocus value="{{ old('email') }}">
                 </div>
 
                 <div>
@@ -43,13 +42,19 @@
 
             <hr>
 
-            <form method="get" action="" class="block-content space-y-4">
+            <form method="post" action="{{ route('register.verify-code') }}" class="block-content space-y-4">
+                @csrf
+
                 <div>
                     <label for="code">Code d'inscription</label>
                     <input id="code" type="text" placeholder="code" name="code" value="" class="w-full uppercase">
                 </div>
 
-                <p class="error-message">Exemple de message d'erreur</p>
+                @error('code', 'register')
+                <div class="alert alert-danger">
+                    <p class="error-message">{{ $message }}</p>
+                </div>
+                @enderror
 
                 <div>
                     <button class="secondary w-full">Devenir membre XYZ</button>

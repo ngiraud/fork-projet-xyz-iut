@@ -1,13 +1,9 @@
-@props(['src' => null, 'size' => 'medium'])
-
-@php
-    $src = null;
-@endphp
+@props(['src' => null, 'size' => 'medium', 'alt' => 'John'])
 
 <div class="avatar avatar-{{ $size }}">
     @if ($src === null)
-    U
+        {{ \Illuminate\Support\Str::take($alt, 1) }}
     @else
-    <img src="" alt="U" />
+        <img src="{{ $src }}" alt="{{ $alt }}"/>
     @endif
 </div>

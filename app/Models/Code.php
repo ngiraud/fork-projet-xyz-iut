@@ -30,4 +30,24 @@ class Code extends Model
     {
         return $this->belongsTo(User::class, 'guest_id');
     }
+
+    public function markAsUsed(User $guest): Code
+    {
+        $this->update([
+            'consumed_at' => now(),
+            'guest_id' => $guest->id,
+        ]);
+
+        return $this;
+    }
+
+    public function isNotUsed(): bool
+    {
+        return !$this->isUsed();
+    }
+
+    public function isUsed(): bool
+    {
+        return !empty($this->consumed_at) && !empty($this->guest_id);
+    }
 }
