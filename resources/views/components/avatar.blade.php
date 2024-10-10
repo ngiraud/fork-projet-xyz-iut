@@ -4,6 +4,6 @@
     @if ($src === null)
         {{ \Illuminate\Support\Str::take($alt, 1) }}
     @else
-        <img src="{{ $src }}" alt="{{ $alt }}"/>
+        <img src="{{ asset("storage/{$src}") }}" alt="{{ $alt }}"/>
     @endif
 </div>

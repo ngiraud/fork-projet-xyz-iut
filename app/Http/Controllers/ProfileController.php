@@ -29,7 +29,7 @@ class ProfileController extends Controller
         }
 
         if ($request->hasFile('avatar')) {
-            $user->avatar = $request->file('avatar')->store('public');
+            $user->avatar = $request->file('avatar')->store('avatars', 'public');
         }
 
         $user->save();
